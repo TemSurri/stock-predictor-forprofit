@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Button = (props) =>{
 
@@ -15,7 +16,7 @@ const Button = (props) =>{
 
         <>
 
-            <a href = {props.href} onClick = {props.onClick} className = {className}>{props.text}</a>
+            <Link to = {props.href} onClick = {props.onClick} className = {className}>{props.text}</Link>
         </>
 
     
