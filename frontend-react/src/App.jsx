@@ -5,6 +5,7 @@ import Header from './components/Header.jsx'
 import Main from './components/Main.jsx'
 import Register from './components/Register.jsx'
 import Login from './components/Login.jsx'
+import AuthProvider from './AuthProvider.jsx'
 
 
 
@@ -16,7 +17,8 @@ function App() {
   return (
 
 
-
+    <>
+    <AuthProvider>
     <BrowserRouter>
     <div className ='d-flex flex-column vh-100'>
     <Header />
@@ -32,6 +34,9 @@ function App() {
     <Footer/>
     </div>
     </BrowserRouter>
+    </AuthProvider>
+
+    </>
     
   )
 }

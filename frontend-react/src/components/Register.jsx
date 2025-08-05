@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-
+import {useNavigate} from 'react-router-dom';
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -8,13 +8,14 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [Loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleRegistration = async (e) => {
         setLoading(true);
 
         e.preventDefault();
         if (password.length < 8) {
-            alert("Password mudt be at least 8 characters long");
+            alert("Password mus be at least 8 characters long");
             setLoading(false);
             return;
         }
@@ -33,6 +34,7 @@ const Register = () => {
         try{
         const response = await axios.post('http://127.0.0.1:8000/api/v1/register/', userData)
         console.log("User Registered", response.data)
+        navigate('/login');
         }
         catch(error){
             console.error("There was an error registering the user", error.response.data)
