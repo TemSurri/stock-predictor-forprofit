@@ -6,17 +6,13 @@ import Main from './components/Main.jsx'
 import Register from './components/Register.jsx'
 import Login from './components/Login.jsx'
 import AuthProvider from './AuthProvider.jsx'
-
-
-
+import Dashboard from './components/dashboard/Dashboard.jsx'
+import PrivateRoute from './PrivateRoute.jsx'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import PublicRoute from './PublicRoute.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-
-
     <>
     <AuthProvider>
     <BrowserRouter>
@@ -24,11 +20,12 @@ function App() {
     <Header />
       <Routes>
 
-        <Route path = '/' element={
-    <Main className ='flex-fill container my-3'/>}/>
+        <Route path = '/' element={<PublicRoute>
+    <Main className ='flex-fill container my-3'/> </PublicRoute>}/>
 
-        <Route path = '/register' element = {<Register/>}/>
-        <Route path = '/login' element = {<Login/>}/>
+        <Route path = '/register' element = {<PublicRoute><Register/></PublicRoute>}/>
+        <Route path = '/login' element = {<PublicRoute><Login/></PublicRoute>}/>
+        <Route path = '/dashboard' element = {<PrivateRoute><Dashboard/></PrivateRoute>}></Route>
 
       </Routes>
     <Footer/>
